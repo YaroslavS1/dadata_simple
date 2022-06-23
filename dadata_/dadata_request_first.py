@@ -1,4 +1,6 @@
 import json
+from typing import Dict
+
 import requests
 from config import API_KEY
 from config import SECRET
@@ -6,7 +8,7 @@ from config import SECRET
 BASE_URL = 'https://cleaner.dadata.ru/api/v1/clean/address'
 
 
-def suggest(query):
+def suggest(query: str) -> Dict[str, str]:
     headers = {
         "Content-type": "application/json",
         "Accept": "application/json",
@@ -25,7 +27,7 @@ def suggest(query):
         raise AssertionError
 
 
-def cli():
+def cli() -> None:
     while True:
         stuff_address = input()
         if len(stuff_address) == 0:
